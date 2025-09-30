@@ -161,7 +161,7 @@ $RECYCLE.BIN/
 # Project specific
 # PyInstaller build files
 build/
-dist/
+# dist/ - Comment this out so exe files are included
 *.spec
 
 # Test files

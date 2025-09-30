@@ -1,111 +1,192 @@
-# Kahoot Quiz Viewer Extension
+# 🎯 Kahoot Quiz Viewer Extension
 
-Extension đơn giản để xem câu hỏi và đáp án từ Kahoot với giao diện đơn sắc, dễ sử dụng.
+A simple, clean extension to view Kahoot quiz questions and answers with a modern dark-themed interface.
 
-## Tính năng
+## ✨ Features
 
-- ✅ Giao diện đơn giản, màu đơn sắc (dark theme)
-- ✅ Hỗ trợ nhập Quiz ID hoặc Game PIN
-- ✅ Scroll để lướt xem các câu hỏi
-- ✅ Hiển thị đầy đủ câu hỏi và đáp án
-- ✅ Không có thành phần dư thừa
-- ✅ Xử lý lỗi tốt
-- ✅ Threading để tránh đơ giao diện
+- ✅ Clean, minimalist interface with dark theme
+- ✅ Support for both Quiz ID and Game PIN input
+- ✅ Scrollable question viewer
+- ✅ Complete question and answer display
+- ✅ No unnecessary components
+- ✅ Robust error handling
+- ✅ Threaded loading to prevent UI freezing
+- ✅ Standalone executable files available
 
-## Cài đặt và Sử dụng
+## 🚀 Installation and Usage
 
-### Yêu cầu
-- Python 3.6+
-- Tkinter (thường có sẵn với Python)
-- Kết nối Internet
+### Requirements
+- **For Executable**: No requirements! Just download and run
+- **For Source Code**: Python 3.6+, Tkinter, Internet connection
 
-### Chạy Extension
+### Method 1: Download Executable (Easiest)
 
-1. Mở terminal/command prompt
-2. Chuyển đến thư mục extension:
+1. Download the repository or clone it
+2. Navigate to the `dist/` folder
+3. Double-click `KahootQuizViewer.exe`
+4. No Python installation required!
+
+### Method 2: Build Your Own Executable
+
+If the pre-built executable doesn't work or you want to build fresh:
+
+1. **Install Python 3.6+** (if not already installed)
+2. **Clone/Download this repository**
+3. **Open terminal in the extension folder**
+4. **Install PyInstaller**:
    ```bash
-   cd extension
+   pip install pyinstaller
    ```
-3. Chạy chương trình:
+5. **Build the executable**:
+   ```bash
+   pyinstaller --onefile --windowed --name "KahootQuizViewer" main.py
+   ```
+6. **Find your exe** in the `dist/` folder
+7. **Run it**: Double-click `KahootQuizViewer.exe`
+
+### Method 3: Run from Source Code
+
+1. **Install Python 3.6+**
+2. **Download/Clone repository**
+3. **Open terminal in extension folder**
+4. **Run directly**:
    ```bash
    python main.py
    ```
 
-### Hướng dẫn sử dụng
+### Method 4: Use Launcher (Windows)
 
-1. **Nhập Quiz ID hoặc Game PIN**: 
-   - **Quiz ID** (khuyên dùng): Chuỗi ký tự như "abc123-def456-ghi789"
-     - Luôn hoạt động, không phụ thuộc vào trạng thái game
-     - Tìm được trong URL của quiz trên Kahoot.it
-   - **Game PIN**: Số 6-7 chữ số như "1234567" 
-     - **CHỈ hoạt động khi game đang diễn ra**
-     - Sau khi game kết thúc, PIN không còn valid
+Double-click `START_KAHOOT.bat` for automated launching
 
-2. **Nhấn "Tải Quiz" hoặc Enter** để tải dữ liệu
+## 📖 How to Use
 
-3. **Xem kết quả**: 
-   - Thông tin quiz hiển thị ở trên
-   - Câu hỏi và đáp án hiển thị bên dưới
-   - Sử dụng thanh scroll để lướt
+1. **Enter Quiz ID or Game PIN**: 
+   - **Quiz ID** (recommended): String like "abc123-def456-ghi789"
+     - Always works, independent of game status
+     - Found in Kahoot.it quiz URLs
+   - **Game PIN**: 6-7 digit number like "1234567" or "735 0114"
+     - **ONLY works when game is ACTIVE**
+     - Invalid after game ends
 
-### 💡 Lấy Quiz ID như thế nào?
+2. **Click "Load Quiz" or press Enter** to fetch data
 
-1. Vào trang Kahoot.it
-2. Tìm quiz bạn muốn xem
-3. Trong URL sẽ có dạng: `https://create.kahoot.it/details/abc123-def456-ghi789`
-4. Phần `abc123-def456-ghi789` chính là Quiz ID
+3. **View Results**: 
+   - Quiz information displayed at top
+   - Questions and answers shown below
+   - Use scroll bar to navigate
 
-## Cấu trúc File
+### 💡 How to get Quiz ID?
+
+1. Go to Kahoot.it
+2. Find the quiz you want to view
+3. In the URL you'll see: `https://create.kahoot.it/details/abc123-def456-ghi789`
+4. The part `abc123-def456-ghi789` is the Quiz ID
+
+## 📁 File Structure
 
 ```
 extension/
-├── main.py           # Giao diện chính (GUI)
-├── kahoot_api.py     # Xử lý API Kahoot
-└── README.md         # Hướng dẫn này
+├── dist/
+│   ├── KahootQuizViewer.exe         # Main executable
+│   └── KahootQuizViewer_Debug.exe   # Debug version with console
+├── main.py                          # Main GUI application
+├── kahoot_api.py                    # Kahoot API handler
+├── START_KAHOOT.bat                 # Launcher script
+├── README.md                        # This documentation
+├── README_EXE.md                    # Executable documentation
+└── .gitignore                       # Git ignore rules
 ```
 
-## Giao diện
+## 🎨 Interface Design
 
-- **Màu nền**: Xám đậm (#2c3e50)
-- **Màu chữ**: Trắng (#ecf0f1)
-- **Màu accent**: Xanh dương (#3498db)
-- **Font**: Arial cho UI, Consolas cho kết quả
-- **Layout**: Đơn giản, tập trung vào nội dung
+- **Background**: Dark Gray (#2c3e50)
+- **Text**: White (#ecf0f1)
+- **Accent**: Blue (#3498db)
+- **Fonts**: Arial for UI, Consolas for results
+- **Layout**: Clean, content-focused design
 
-## Xử lý lỗi
+## 🛠️ Error Handling
 
-Extension xử lý các lỗi phổ biến:
-- Quiz không tồn tại (404)
-- Quiz private/restricted (403)
-- Lỗi kết nối Internet
+The extension handles common errors:
+- Quiz not found (404)
+- Private/restricted quiz (403)
+- Internet connection issues
 - Rate limiting
-- SSL issues
-- Định dạng input không hợp lệ
+- SSL certificate problems
+- Invalid input formats
+- PIN not active warnings
 
-## Tính năng kỹ thuật
+## ⚙️ Technical Features
 
-- **Threading**: Tải dữ liệu trong background thread
-- **Rate Limiting**: Tránh bị block bởi Kahoot
-- **SSL Handling**: Xử lý SSL certificates
-- **Error Recovery**: Retry logic với exponential backoff
-- **Clean Text**: Loại bỏ HTML tags và formatting
+- **Threading**: Background data loading
+- **Rate Limiting**: Prevents Kahoot API blocking
+- **SSL Handling**: Certificate verification with fallback
+- **Error Recovery**: Retry logic with exponential backoff
+- **Text Cleaning**: Removes HTML tags and formatting
+- **PIN Normalization**: Handles spaced PINs (e.g., "735 0114")
 
-## Lưu ý
+## 📋 Important Notes
 
-- Extension này chỉ dành cho mục đích giáo dục
-- Tuân thủ Terms of Service của Kahoot
-- Không spam requests
-- Không sử dụng để gian lận trong thi cử
+- This extension is for educational purposes only
+- Comply with Kahoot's Terms of Service
+- Do not spam requests
+- Do not use for cheating in examinations
+- PINs only work during active games
 
-## Support
+## 🔨 Building Your Own Executable
 
-Nếu gặp lỗi, kiểm tra:
-1. Kết nối Internet
-2. Quiz ID/PIN đúng format
-3. Quiz không phải private
-4. Python version >= 3.6
+### Quick Build Commands:
 
-## License
+```bash
+# Install PyInstaller
+pip install pyinstaller
 
-Phần mở rộng của Kitty-Tools project.
-Chỉ sử dụng cho mục đích giáo dục và nghiên cứu.
+# Build main version (no console)
+pyinstaller --onefile --windowed --name "KahootQuizViewer" main.py
+
+# Build debug version (with console)
+pyinstaller --onefile --console --name "KahootQuizViewer_Debug" main.py
+```
+
+### Build Options Explained:
+- `--onefile`: Creates single executable file
+- `--windowed`: No console window (clean)
+- `--console`: Shows console (for debugging)
+- `--name`: Custom executable name
+
+### After Building:
+1. Find files in `dist/` folder
+2. `KahootQuizViewer.exe` - Main version
+3. `KahootQuizViewer_Debug.exe` - Debug version
+4. Distribute the exe files to anyone!
+
+## 🆘 Troubleshooting
+
+### Installation Issues:
+- **No Python**: Download from [python.org](https://python.org)
+- **PyInstaller fails**: Try `pip install --upgrade pyinstaller`
+- **Permission errors**: Run terminal as Administrator
+
+### Runtime Issues:
+1. **Internet connection** - Required for Kahoot API
+2. **Correct Quiz ID/PIN format** - See examples above
+3. **Quiz is public** - Private quizzes won't work
+4. **Antivirus blocking** - Add exe to exceptions
+5. **PIN not working** - Game must be active
+
+### Common Issues:
+- **"PIN not working"**: Game must be active/running
+- **"Quiz not found"**: Check if Quiz ID is correct
+- **"Access forbidden"**: Quiz might be private/restricted
+- **"SSL Error"**: Try the debug version for details
+- **"Exe won't start"**: Check antivirus, try running as admin
+
+## 📄 License
+
+Part of the Kitty-Tools project.
+For educational and research purposes only.
+
+## 🤝 Contributing
+
+This is a simplified extension based on the original Kitty-Tools codebase.
+Feel free to modify and improve the code for your needs.

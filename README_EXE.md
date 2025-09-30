@@ -1,81 +1,138 @@
-# 🎯 Kahoot Quiz Viewer - Executable Files
+# 🎯 Kahoot Quiz Viewer - Executable Guide
 
-## 📁 Các file exe đã tạo
+## � Pre-built Executables
 
-### 🖥️ **KahootQuizViewer.exe** (Phiên bản chính)
-- **Mô tả**: Ứng dụng chính không hiển thị console
-- **Kích thước**: ~35MB (bao gồm tất cả dependencies)
-- **Cách sử dụng**: Double-click để chạy
-- **Đặc điểm**: 
-  - Giao diện đẹp, không có cửa sổ console
-  - Thích hợp cho người dùng cuối
-  - Chạy hoàn toàn độc lập, không cần cài Python
+If you downloaded this repository, you should find these files in the `dist/` folder:
 
-### 🐛 **KahootQuizViewer_Debug.exe** (Phiên bản debug)
-- **Mô tả**: Phiên bản có console để debug
-- **Kích thước**: ~35MB 
-- **Cách sử dụng**: Double-click để chạy
-- **Đặc điểm**:
-  - Hiển thị console với thông tin debug
-  - Thích hợp khi gặp lỗi cần kiểm tra
-  - Có thể xem error messages chi tiết
+### 🖥️ **KahootQuizViewer.exe** (Main Version)
+- **Description**: Clean application without console window
+- **Size**: ~35MB (includes all dependencies)
+- **Usage**: Double-click to run
+- **Features**: 
+  - Clean interface, no console window
+  - Perfect for end users
+  - Runs completely standalone, no Python needed
 
-## 🚀 Cách sử dụng
+### 🐛 **KahootQuizViewer_Debug.exe** (Debug Version)
+- **Description**: Version with console for debugging
+- **Size**: ~35MB 
+- **Usage**: Double-click to run
+- **Features**:
+  - Shows console with debug information
+  - Useful when troubleshooting errors
+  - Displays detailed error messages
 
-1. **Chạy ứng dụng**:
-   - Tìm file `KahootQuizViewer.exe` trong thư mục `dist/`
-   - Double-click để chạy
-   - Không cần cài đặt Python hay bất kỳ thứ gì khác!
+## 🚀 How to Use
 
-2. **Nhập dữ liệu**:
-   - **Quiz ID**: Dạng UUID (vd: f47ac10b-58cc-4372-a567-0e02b2c3d479)
-   - **Game PIN**: 6-7 chữ số (vd: 735 0114, 7350114)
+### Option 1: Use Pre-built Executable (Easiest)
 
-3. **Xem kết quả**:
-   - Câu hỏi và đáp án sẽ hiển thị ngay trong ứng dụng
-   - Giao diện đẹp mắt với theme dark
+1. **Download this repository** (or clone it)
+2. **Navigate to `dist/` folder**
+3. **Double-click `KahootQuizViewer.exe`**
+4. **No Python installation required!**
 
-## ⚠️ Lưu ý quan trọng
+### Option 2: Build Your Own Executable
 
-- **Game PIN**: Chỉ hoạt động khi game Kahoot đang diễn ra
-- **Quiz ID**: Luôn hoạt động (nếu quiz công khai)
-- **Kết nối Internet**: Cần có internet để lấy dữ liệu từ Kahoot
-- **Tường lửa**: Có thể cần cho phép ứng dụng truy cập internet
+If the pre-built executable doesn't work or you prefer building fresh:
 
-## 📂 Cấu trúc thư mục
+1. **Install Requirements**:
+   ```bash
+   pip install pyinstaller
+   ```
+
+2. **Build Commands**:
+   ```bash
+   # Main version (no console)
+   pyinstaller --onefile --windowed --name "KahootQuizViewer" main.py
+   
+   # Debug version (with console)
+   pyinstaller --onefile --console --name "KahootQuizViewer_Debug" main.py
+   ```
+
+3. **Find Your Files**: Check the `dist/` folder for your new executables
+
+## 📖 Using the Application
+
+1. **Launch the app**: Double-click the exe file
+2. **Enter Input**:
+   - **Quiz ID**: UUID format (e.g., f47ac10b-58cc-4372-a567-0e02b2c3d479)
+   - **Game PIN**: 6-7 digits (e.g., 735 0114, 7350114)
+3. **View Results**: Questions and answers display in the app with dark theme
+
+## ⚠️ Important Notes
+
+- **Game PIN**: Only works when Kahoot game is ACTIVE
+- **Quiz ID**: Always works (if quiz is public)
+- **Internet**: Required to fetch data from Kahoot
+- **Firewall**: May need to allow app internet access
+- **Antivirus**: Some antivirus may flag the exe (false positive)
+
+## 📂 Directory Structure
 
 ```
 extension/
 ├── dist/
-│   ├── KahootQuizViewer.exe          # ← Chạy file này
+│   ├── KahootQuizViewer.exe          # ← Run this file
 │   └── KahootQuizViewer_Debug.exe    # ← Debug version
-├── build/                            # Thư mục tạm (có thể xóa)
-├── main.py                          # Source code gốc
+├── build/                            # Temporary folder (can delete)
+├── main.py                          # Source code
 ├── kahoot_api.py                    # API handler
-└── run.bat                          # Batch file backup
+├── START_KAHOOT.bat                 # Launcher script
+├── README.md                        # Main documentation
+└── .gitignore                       # Git ignore rules
 ```
 
 ## 🔧 Troubleshooting
 
-### Nếu gặp lỗi:
-1. Thử chạy `KahootQuizViewer_Debug.exe` để xem lỗi chi tiết
-2. Kiểm tra kết nối internet
-3. Với Game PIN: Đảm bảo game đang active
-4. Với Quiz ID: Đảm bảo quiz có quyền public
+### If Executable Won't Run:
+1. **Antivirus blocking**: Add exe to antivirus exceptions
+2. **Run as administrator**: Right-click → "Run as administrator"
+3. **Windows updates**: Ensure Windows is up to date
+4. **Missing dependencies**: Try the debug version to see detailed errors
 
-### Nếu file exe không chạy:
-1. Kiểm tra antivirus (có thể chặn file)
-2. Chạy với quyền administrator
-3. Đảm bảo Windows đã cập nhật
+### If You Get Errors:
+1. Try `KahootQuizViewer_Debug.exe` to see detailed error messages
+2. Check internet connection
+3. For Game PIN: Ensure game is currently active
+4. For Quiz ID: Ensure quiz is public/accessible
 
-## 💡 Tips
+### Building Issues:
+- **PyInstaller not found**: Run `pip install pyinstaller`
+- **Python not found**: Install Python from [python.org](https://python.org)
+- **Permission denied**: Run terminal as administrator
+- **Build fails**: Try updating PyInstaller: `pip install --upgrade pyinstaller`
 
-- **Chia sẻ**: Có thể copy file exe sang máy khác mà không cần cài Python
-- **Backup**: Giữ lại source code (`main.py`, `kahoot_api.py`) để chỉnh sửa sau
-- **Update**: Khi có cập nhật, chạy lại `pyinstaller` để tạo exe mới
+## 💡 Pro Tips
+
+- **Sharing**: Copy exe files to other computers - no Python needed
+- **Backup**: Keep source code (`main.py`, `kahoot_api.py`) for future edits
+- **Updates**: When code changes, rebuild with PyInstaller
+- **Debugging**: Use debug version when troubleshooting
+- **Portable**: Exe files are completely portable
+
+## 🔄 Rebuilding Instructions
+
+If you need to rebuild the executables:
+
+```bash
+# Navigate to extension folder
+cd path/to/extension
+
+# Install PyInstaller (if not already installed)
+pip install pyinstaller
+
+# Build main version (recommended)
+pyinstaller --onefile --windowed --name "KahootQuizViewer" main.py
+
+# Build debug version (optional)
+pyinstaller --onefile --console --name "KahootQuizViewer_Debug" main.py
+
+# Your files will be in the dist/ folder
+```
 
 ---
 
-**Tạo bởi**: Kitty-Tools Extension  
-**Ngày tạo**: September 30, 2025  
-**PyInstaller**: v6.16.0
+**Created by**: Kitty-Tools Extension  
+**Build Date**: September 30, 2025  
+**PyInstaller**: v6.16.0  
+**Python**: 3.13+
